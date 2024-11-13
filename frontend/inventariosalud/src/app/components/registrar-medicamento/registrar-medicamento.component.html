@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="form-card">
+    <h4>Registrar Medicamento</h4>
+    <div class="form-container">
+      <div class="form-grid">
+        <div class="field">
+          <label for="nombre">Nombre <span class="required">*</span></label>
+          <input id="nombre" type="text" pInputText [(ngModel)]="medicamento.nombre" required autocomplete="off" />
+          <small *ngIf="submitted && !medicamento.nombre" class="p-error">El nombre es obligatorio.</small>
+        </div>
+    
+        <div class="field">
+          <label for="categoria">Categoría <span class="required">*</span></label>
+          <input id="categoria" type="text" pInputText [(ngModel)]="medicamento.categoria" required autocomplete="off" />
+          <small *ngIf="submitted && !medicamento.categoria" class="p-error">La categoría es obligatoria.</small>
+        </div>
+    
+        <div class="field">
+          <label for="codigo">Código <span class="required">*</span></label>
+          <input id="codigo" type="text" pInputText [(ngModel)]="medicamento.codigo" required autocomplete="off" />
+          <small *ngIf="submitted && !medicamento.codigo" class="p-error">El código es obligatorio.</small>
+        </div>
+    
+        <div class="field">
+          <label for="nivelMinimo">Nivel Mínimo <span class="required">*</span></label>
+          <input id="nivelMinimo" type="number" pInputText [(ngModel)]="medicamento.nivelMinimo" required autocomplete="off" />
+          <small *ngIf="submitted && medicamento.nivelMinimo <= 0" class="p-error">El nivel mínimo debe ser mayor a 0.</small>
+        </div>
+    
+        <div class="field">
+          <label for="fechaExpiracion">Fecha de Expiración <span class="required">*</span></label>
+          <p-calendar id="fechaExpiracion" [(ngModel)]="medicamento.fechaExpiracion" [showIcon]="true"></p-calendar>
+          <small *ngIf="submitted && !medicamento.fechaExpiracion" class="p-error">La fecha de expiración es obligatoria.</small>
+        </div>
+    
+        <div class="field">
+          <label for="cantidadDisponible">Cantidad Disponible <span class="required">*</span></label>
+          <input id="cantidadDisponible" type="number" pInputText [(ngModel)]="medicamento.cantidadDisponible" required autocomplete="off" />
+          <small *ngIf="submitted && medicamento.cantidadDisponible <= 0" class="p-error">La cantidad debe ser mayor a 0.</small>
+        </div>
+    
+        <div class="field full-width">
+          <label for="precio">Precio <span class="required">*</span></label>
+          <input id="precio" type="number" pInputText [(ngModel)]="medicamento.precio" required autocomplete="off" />
+          <small *ngIf="submitted && medicamento.precio <= 0" class="p-error">El precio debe ser mayor a 0.</small>
+        </div>
+      </div>
+    </div>
+    
+    <div class="buttons">
+      <button pButton label="Guardar" class="p-button-rounded p-button-success" (click)="guardarMedicamento()"></button>
+      <button pButton label="Cancelar" class="p-button-rounded p-button-secondary" routerLink="/lista"></button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="p-toolbar">
+  <div class="p-toolbar-group-left">
+    <h2>Lista de Medicamentos</h2>
+  </div>
+  <div class="p-toolbar-group-right">
+    <button pButton label="Registrar Medicamento" icon="pi pi-plus" routerLink="/registrar" class="p-button-success"></button>
+  </div>
+</div>
+
+<p-table [value]="medicamentos" [paginator]="true" [rows]="5" [responsiveLayout]="'scroll'">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Nombre</th>
+      <th>Categoría</th>
+      <th>Código</th>
+      <th>Nivel Mínimo</th>
+      <th>Fecha Expiración</th>
+      <th>Cantidad Disponible</th>
+      <th>Precio</th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-medicamento>
+    <tr>
+      <td>{{ medicamento.nombre }}</td>
+      <td>{{ medicamento.categoria }}</td>
+      <td>{{ medicamento.codigo }}</td>
+      <td>{{ medicamento.nivelMinimo }}</td>
+      <td>{{ medicamento.fechaExpiracion }}</td>
+      <td>{{ medicamento.cantidadDisponible }}</td>
+      <td>{{ medicamento.precio | currency }}</td>
+      <td>
+        <button pButton icon="pi pi-pencil" (click)="editarMedicamento(medicamento)"></button>
+        <button pButton icon="pi pi-trash" class="p-button-danger" (click)="eliminarMedicamento(medicamento.id)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+<p-dialog [(visible)]="mostrarDialogoEdicion" header="Editar Medicamento" [modal]="true" [closable]="false" [style]="{width: '400px'}">
+  <div class="field">
+    <label for="nombre">Nombre</label>
+    <br>
+    <input id="nombre" type="text" pInputText [(ngModel)]="medicamentoSeleccionado.nombre" autocomplete="off"/>
+  </div>
+
+  <div class="field">
+    <label for="categoria">Categoría</label>
+    <br>
+    <input id="categoria" type="text" pInputText [(ngModel)]="medicamentoSeleccionado.categoria" autocomplete="off"/>
+  </div>
+
+  <div class="field">
+    <label for="codigo">Código</label>
+    <br>
+    <input id="codigo" type="text" pInputText [(ngModel)]="medicamentoSeleccionado.codigo"autocomplete="off" />
+  </div>
+
+  <div class="field">
+    <label for="nivelMinimo">Nivel Mínimo</label>
+    <br>
+    <input id="nivelMinimo" type="number" pInputText [(ngModel)]="medicamentoSeleccionado.nivelMinimo" autocomplete="off"/>
+  </div>
+
+  <div class="field">
+    <label for="fechaExpiracion">Fecha de Expiración</label>
+    <br>
+    <p-calendar id="fechaExpiracion" [(ngModel)]="medicamentoSeleccionado.fechaExpiracion" [showIcon]="true"></p-calendar>
+  </div>
+
+  <div class="field">
+    <label for="cantidadDisponible">Cantidad Disponible</label>
+    <br>
+    <input id="cantidadDisponible" type="number" pInputText [(ngModel)]="medicamentoSeleccionado.cantidadDisponible" autocomplete="off"/>
+  </div>
+
+  <div class="field">
+    <label for="precio">Precio</label>
+    <br>
+    <input id="precio" type="number" pInputText [(ngModel)]="medicamentoSeleccionado.precio" autocomplete="off"/>
+  </div>
+
+  <footer class="dialog-footer" style="text-align: center;">
+    <br>
+    <button style="margin-right: 10%;" pButton label="Guardar" icon="pi pi-check" (click)="guardarCambios()" class="p-button-success"></button>
+    <button pButton label="Cancelar" icon="pi pi-times" (click)="cancelarEdicion()" class="p-button-secondary"></button>
+  </footer>
+</p-dialog>
