@@ -30,7 +30,7 @@ Este proyecto es un sistema de gestión de medicamentos desarrollado con Angular
 
 ### **Backend**
 - Spring Boot
-- MySQL
+- PostgreSQL
 
 ---
 
@@ -55,6 +55,7 @@ Ejecuta la aplicación Spring Boot:
 mvn spring-boot:run
 
 📸 Capturas de Pantalla
+
 Formulario de Registro
 ![image](https://github.com/user-attachments/assets/54273257-a159-427d-a9b4-8903daa43dfb)
 
