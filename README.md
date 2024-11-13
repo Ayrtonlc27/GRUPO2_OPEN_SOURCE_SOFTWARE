@@ -43,7 +43,7 @@ Este proyecto es un sistema de gestión de medicamentos desarrollado con Angular
    npm install -g @angular/cli
 
 Pasos para iniciar el Frontend
-git clone https://github.com/tu-usuario/tu-repositorio.git
+git clone [https://github.com/tu-usuario/tu-repositorio.git](https://github.com/Ayrtonlc27/GRUPO2_OPEN_SOURCE_SOFTWARE)
 cd tu-repositorio/frontend
 npm install
 ng serve
@@ -54,9 +54,7 @@ Configura la base de datos en el archivo application.properties.
 Ejecuta la aplicación Spring Boot:
 mvn spring-boot:run
 
-📸 Capturas de Pantalla
-
-Formulario de Registro
+📸 Capturas de PantallaFormulario de Registro
 ![image](https://github.com/user-attachments/assets/54273257-a159-427d-a9b4-8903daa43dfb)
 
 Lista de Medicamentos
