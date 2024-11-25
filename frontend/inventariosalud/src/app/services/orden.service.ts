@@ -20,4 +20,8 @@ export class OrdenService {
   verDetalle(id: number): Observable<OrdenDetalle[]> {
     return this.http.get<OrdenDetalle[]>(`${this.baseUrl}/verDetalle/${id}`);
   }
+
+  crearOrden(): Observable<Orden[]> {
+    return this.http.get<Orden[]>(`${this.baseUrl}/crear`);
+  }
 }

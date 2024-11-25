@@ -35,8 +35,9 @@ public class OrdenControlador {
         return ResponseEntity.ok(ordenServicio.listarDetalleOrden(ordenId));
     }
 
-    @PostMapping("/crear")
-    public Orden crearOrden(@RequestBody Orden orden_request){
-        return ordenServicio.crearOrdenMedicamentos(orden_request);
+    @GetMapping("/crear")
+    public ResponseEntity<List<OrdenProjection>> crearOrden(){
+        ordenServicio.crearOrdenMedicamentos();
+        return ResponseEntity.ok(ordenServicio.listarOrdenes());
     }
 }

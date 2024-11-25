@@ -9,7 +9,7 @@ import com.inventario.productos.salud.repositorio.OrdenProjection;
 import java.util.List;
 
 public interface IOrdenServicio {
-    Orden crearOrdenMedicamentos(Long[] medicamentosId);
+    Orden crearOrdenMedicamentos();
     List<OrdenProjection> listarOrdenes();
     List<OrdenDetalle> listarDetalleOrden(Long ordenId);
 }
