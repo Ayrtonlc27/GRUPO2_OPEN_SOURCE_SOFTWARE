@@ -1,0 +1,44 @@
+<form [formGroup]="formulario" (ngSubmit)="guardar()">  
+    <h2 mat-dialog-title>  
+      {{ datos.id_movimiento ? 'Editar' : 'Nuevo' }} Movimiento  
+    </h2>  
+    
+    <mat-dialog-content>  
+      <!-- <mat-form-field>  
+        <input   
+          matInput   
+          formControlName="id_medicamento"   
+          placeholder="Medicamento"  
+        >  
+      </mat-form-field>   -->
+      <mat-form-field>  
+        <input   
+          matInput   
+          formControlName="cantidad"   
+          placeholder="Cantidad"  
+        >  
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select formControlName="id_medicamento" placeholder="Medicamento">
+          <mat-option *ngFor="let medicamento of medicamentos" [value]="medicamento.id">
+            {{ medicamento.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field>  
+        <mat-select formControlName="tipo_movimiento" placeholder="Tipo de Movimiento">  
+          <mat-option value="ingreso">Entrada</mat-option>  
+          <mat-option value="salida">Salida</mat-option>  
+        </mat-select>  
+      </mat-form-field>  
+      
+      <!-- Más campos según sea necesario -->  
+    </mat-dialog-content>  
+    
+    <mat-dialog-actions>  
+      
+      <button mat-button color="primary" type="button" (click)="cancelar()">Cancelar</button>  
+      <button mat-button color="primary" type="submit">Guardar</button>  
+    </mat-dialog-actions>  
+  </form>  

@@ -1,0 +1,35 @@
+<form [formGroup]="formulario" (ngSubmit)="guardar()">  
+    <h2 mat-dialog-title>  
+      {{ datos.id ? 'Editar' : 'Nueva' }} Alerta  
+    </h2>  
+    
+    <mat-dialog-content>  
+      <mat-form-field>  
+        <input   
+          matInput   
+          formControlName="medicamento"   
+          placeholder="Medicamento"  
+        >  
+      </mat-form-field>  
+      
+      <mat-form-field>  
+        <mat-select formControlName="tipoAlerta" placeholder="Tipo de Alerta">  
+          <mat-option value="Stock Bajo">Stock Bajo</mat-option>  
+          <mat-option value="Caducidad Próxima">Caducidad Próxima</mat-option>  
+        </mat-select>  
+      </mat-form-field>  
+
+      <mat-form-field>  
+        <textarea   
+          matInput   
+          formControlName="mensaje"   
+          placeholder="Mensaje"  
+        ></textarea>  
+      </mat-form-field>  
+    </mat-dialog-content>  
+    
+    <mat-dialog-actions>  
+      <button mat-button type="button" (click)="cancelar()">Cancelar</button>  
+      <button mat-raised-button color="primary" type="submit">Guardar</button>  
+    </mat-dialog-actions>  
+  </form>  
