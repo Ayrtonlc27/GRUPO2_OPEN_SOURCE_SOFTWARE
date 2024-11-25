@@ -27,4 +27,16 @@ export class MedicamentoService {
   eliminarMedicamento(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+  
+  //HU0005
+  buscarMedicamentos(filtro: string, valor: string): Observable<Medicamento[]> {
+    if(valor.length > 0){
+      if(filtro == "codigo"){
+        return this.http.get<Medicamento[]>(`${this.baseUrl}/busquedaCodigo/${valor}`);
+      }else if(filtro == "nombre"){
+        return this.http.get<Medicamento[]>(`${this.baseUrl}/busquedaDescripcion/${valor}`);
+      }
+    }
+      return this.http.get<Medicamento[]>(this.baseUrl);
+  }
 }

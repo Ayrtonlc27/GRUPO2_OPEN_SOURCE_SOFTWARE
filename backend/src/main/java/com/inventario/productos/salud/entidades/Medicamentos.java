@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
+//HU008
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Medicamentos")
@@ -112,5 +115,15 @@ public class Medicamentos {
     public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
+    //HU008
+    @OneToMany(mappedBy = "medicamento")
+    private Set<OrdenDetalle> ordenDetalles = new HashSet<>();
 
+    public Set<OrdenDetalle> getOrdenDetalles(){
+        return ordenDetalles;
+    }
+
+    public void setOrdenDetalles(Set<OrdenDetalle> ordenDetalles){
+        this.ordenDetalles = ordenDetalles;
+    }
 }

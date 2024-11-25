@@ -118,5 +118,14 @@ export class ListaMedicamentosComponent implements OnInit {
     // Descargar el archivo
     doc.save('lista-medicamentos.pdf');
   }
+
+     //HU005
+     buscarMedicamentos() {
+      var outputElement = document.getElementById('selectFiltro') as HTMLSelectElement;
+      var inputElement = document.getElementById('filtro') as HTMLInputElement;
+      this.medicamentoService.buscarMedicamentos(outputElement.value.toLowerCase(), inputElement.value.toLowerCase().trim()).subscribe(data => {
+        this.medicamentos = data;
+      });
+    }
   
 }
