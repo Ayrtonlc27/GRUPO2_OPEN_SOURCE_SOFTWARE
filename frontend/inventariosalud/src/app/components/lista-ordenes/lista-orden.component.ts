@@ -26,6 +26,12 @@ export class ListaOrdenComponent implements OnInit {
     });
   }
 
+  crearOrden(){
+    this.OrdenService.crearOrden().subscribe(data => {
+      this.ordenes = data;
+    });
+  }
+
   cancelarEdicion() {
     this.mostrarDialogoEdicion = false;
   }  

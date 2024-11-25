@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -35,19 +36,28 @@ public class OrdenServicio {
     }
 
     @Transactional
-    public Orden crearOrdenMedicamentos(Orden orden_request){
+    public void crearOrdenMedicamentos(){
         List<Medicamentos> listado_medicamentos = medicamentoRepositorio.findAll();
-        int cantidad_por_defecto = 10;
+        int cantidad_por_defecto = 20;
 
         Orden orden = new Orden();
-        LocalDate localDate = LocalDate.of(2020, 2, 20);
-        orden.setFechaOrden(orden_request.getFechaOrden());
-        orden.setFechaRequerida(orden_request.getFechaRequerida());
-        orden.setProveedor(orden_request.getProveedor());
+        String fechaOrdenStr = "2024-11-25";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(fechaOrdenStr, formatter);
+        Date fechaOrden = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+        String fechaRequeridaStr = "2024-12-05";
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate2 = LocalDate.parse(fechaRequeridaStr, formatter2);
+        Date fechaRequerida = Date.from(localDate2.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+        orden.setFechaOrden(fechaOrden);
+        orden.setFechaRequerida(fechaRequerida);
+        orden.setProveedor("FARMACIAS PERÚ");
         orden = ordenRepositorio.save(orden);
 
         for(Medicamentos medicamento : listado_medicamentos) {
-            if(medicamento.getCantidadDisponible() < 5) {
+            if(medicamento.getCantidadDisponible() <= medicamento.getNivelMinimo()) {
                 OrdenDetalle ordenDetalle = new OrdenDetalle();
                 ordenDetalle.setOrden(orden);
                 ordenDetalle.setMedicamento(medicamento);
@@ -56,6 +66,6 @@ public class OrdenServicio {
                 ordenDetalleRepositorio.save(ordenDetalle);
             }
         }
-        return orden;
+        //return orden;
     }
 }
