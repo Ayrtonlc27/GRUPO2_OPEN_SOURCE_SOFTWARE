@@ -18,7 +18,7 @@ export class MovimientosService {
 
   // Crear movimiento  
   crearMovimiento(movimiento: Movimiento): Observable<Movimiento> {  
-    return this.http.post<Movimiento>(this.apiUrl, movimiento);  
+    return this.http.post<Movimiento>(`${this.apiUrl}/`, movimiento);  
   }  
 
   // Obtener movimiento por ID  

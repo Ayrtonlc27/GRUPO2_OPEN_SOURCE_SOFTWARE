@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movimiento } from '../../models/Movimiento';
 import { MovimientosService } from '../../services/movimientos.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MovimientoFormDialogComponent } from '../../shared/forms/movimiento-form-dialog/movimiento-form-dialog.component';
 import { ConfirmDialogComponent } from '../../shared/forms/confirm-dialog/confirm-dialog.component';
 import { RouterModule } from '@angular/router';
@@ -10,12 +10,20 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { CommonModule, NgIf } from '@angular/common';
 import { DataSource } from '@angular/cdk/collections';
 import { MatTableModule } from '@angular/material/table'; 
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @Component({
   selector: 'app-movimientos',
   standalone: true,
-  imports: [RouterModule,MatIconModule,MatProgressSpinner,NgIf,MatTableModule,CommonModule],
+  imports: [RouterModule,MatIconModule,MatProgressSpinner,NgIf,MatTableModule,CommonModule, MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDialogModule],
   templateUrl: './movimientos.component.html',
   styleUrl: './movimientos.component.css'
 })
@@ -26,7 +34,8 @@ export class MovimientosComponent  implements OnInit {
     'tipoMovimiento',   
     'fecha',   
     'cantidad',   
-    'usuario'  
+    'usuario', 
+    'acciones'
   ]; 
 
   movimientos: Movimiento[] = [];  
@@ -49,6 +58,8 @@ export class MovimientosComponent  implements OnInit {
       next: (movimientos) => {  
         this.movimientos = movimientos;  
         this.cargando = false;  
+        console.log(movimientos);
+        
       },  
       error: (err) => {  
         this.error = 'Error al cargar los movimientos';  
@@ -107,7 +118,8 @@ export class MovimientosComponent  implements OnInit {
       width: '350px',  
       data: {  
         titulo: 'Confirmar Eliminación',  
-        mensaje: '¿Está seguro que desea eliminar este movimiento?'  
+        mensaje: '¿Está seguro que desea eliminar este movimiento?'  ,
+        id: id
       }  
     });  
 

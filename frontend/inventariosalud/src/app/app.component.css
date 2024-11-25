@@ -1,0 +1,6 @@
+/* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
+/* Puedes personalizar colores adicionales si lo deseas */  
+:root {  
+  --primary-color: #1976d2;  
+  --accent-color: #ff4081;  
+}  
