@@ -21,12 +21,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select'
 import { RouterModule } from '@angular/router';
+//HU008
+import { ListaOrdenComponent } from './components/lista-ordenes/lista-orden.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ListaMedicamentosComponent,
+    ListaOrdenComponent,
     RegistrarMedicamentoComponent // Declaración del componente Home
   ],
   imports: [

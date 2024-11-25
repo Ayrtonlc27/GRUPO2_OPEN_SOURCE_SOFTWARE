@@ -4,13 +4,14 @@ import { ListaMedicamentosComponent } from './components/lista-medicamentos/list
 import { RegistrarMedicamentoComponent } from './components/registrar-medicamento/registrar-medicamento.component';
 import { MovimientosComponent } from './components/movimientos/movimientos.component';
 import { AlertasComponent } from './components/alertas/alertas.component';
-
+import { ListaOrdenComponent } from './components/lista-ordenes/lista-orden.component';
 
 const routes: Routes = [
   { path: 'lista', component: ListaMedicamentosComponent },
   { path: 'registrar', component: RegistrarMedicamentoComponent},
   {path: 'movimientos', component: MovimientosComponent},
   {path: 'alertas', component: AlertasComponent},
+  { path: 'listaOrden', component: ListaOrdenComponent },
   { path: '**', redirectTo: 'lista' } // Ruta para el componente Home
 ];
 
